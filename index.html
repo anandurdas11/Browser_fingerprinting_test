@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FingerprintJS Pro Example</title>
+</head>
+
+<body>
+    <h1>FingerprintJS Pro Example</h1>
+    <div id="visitorId">Loading...</div>
+
+    <!-- Include the FingerprintJS Pro library -->
+    <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs-pro@3/dist/fp.min.js"></script>
+
+    <!-- Use the FingerprintJS Pro library -->
+    <script>
+        // Wait for the library to load
+        FingerprintJS.load({
+            apiKey: 'y4O0Kp69ovqr4Eqy5p6U'  // Replace with your actual API key
+        }).then(fp => {
+            // Get the visitor identifier when the library is fully loaded
+            return fp.get();
+        }).then(result => {
+            // This is the visitor identifier:
+            const visitorId = result.visitorId;
+            console.log(visitorId);
+            document.getElementById('visitorId').textContent = `Visitor ID: ${visitorId}`;
+        }).catch(error => {
+            console.error('Error getting visitor identifier:', error);
+        });
+    </script>
+</body>
+
+</html>
